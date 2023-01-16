@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_CRUD_SQLite.Pages.AddUser"
+             BackgroundColor="#B5C2AA"
+             xmlns:inputs="clr-namespace:Syncfusion.Maui.Inputs;assembly=Syncfusion.Maui.Inputs"
+             Title="AddUser">
+    <StackLayout
+        Margin="16"
+        >
+        <Frame
+            Margin="0,10,0,0"
+            CornerRadius="8"
+            BackgroundColor="{DynamicResource Gray300}"
+            Padding="8,2">
+            <Entry
+                TextChanged="userNameEntry_TextChanged"
+                Placeholder="Enter username"
+                BackgroundColor="{DynamicResource Gray300}"
+                PlaceholderColor="Black"
+                TextColor="Black"
+                MaxLength="25"
+                x:Name="userNameEntry"/>
+        </Frame>
+        <Label
+            Margin="5,0,5,5"
+            IsVisible="false"
+            TextColor="Red"
+            x:Name="userNameError"/>
+        <Frame
+            Margin="0,5,0,0"
+            CornerRadius="8"
+            BackgroundColor="{DynamicResource Gray300}"
+            Padding="0,2">
+            <inputs:SfComboBox 
+                Placeholder="Select Country"
+                PlaceholderColor="Black"
+                DropDownIconColor="{x:StaticResource Primary}"
+                BackgroundColor="{DynamicResource Gray300}"
+                MaxDropDownHeight="200"
+                x:Name="countryCombobox"
+                SelectionChanged="countryChanged"
+                DisplayMemberPath="CountryName"/>
+        </Frame>
+        <Label
+                    Margin="5,0,5,5"
+                    IsVisible="false"
+                    TextColor="Red"
+                    x:Name="countryNameError"/>
+        <Frame
+            Margin="0,5,0,0"
+            CornerRadius="8"
+            BackgroundColor="{DynamicResource Gray300}"
+            Padding="0,2">
+            <inputs:SfComboBox 
+                Placeholder="Select City"
+                PlaceholderColor="Black"
+                DropDownIconColor="{x:StaticResource Primary}"
+                BackgroundColor="{DynamicResource Gray300}"
+                MaxDropDownHeight="200"
+                x:Name="cityCombobox"
+                SelectionChanged="cityChanged"
+                DisplayMemberPath="CityName"/>
+        </Frame>
+        <Label
+            Margin="5,0,5,5"
+            IsVisible="false"
+            TextColor="Red"
+            x:Name="cityNameError"/>
+        <Label
+            Margin="0,5,0,0"
+            Text="Select Your Gender"
+            FontAttributes="Bold"
+            TextColor="Black"/>
+        <StackLayout
+            Orientation="Horizontal">
+            <RadioButton
+                x:Name="maleGender"
+                CheckedChanged="RadioButton_CheckedChanged"
+                Value="Male"
+                IsChecked="True"
+                TextColor="Black"
+                Content="Male"
+                GroupName="Gender" />
+            <RadioButton 
+                x:Name="femaleGender"
+                CheckedChanged="RadioButton_CheckedChanged"
+                TextColor="Black"
+                Content="Female"
+                Value="Female"
+                GroupName="Gender" />
+            <RadioButton 
+                x:Name="otherGender"
+                CheckedChanged="RadioButton_CheckedChanged"
+                TextColor="Black"
+                Content="Others"
+                Value="Others"
+                GroupName="Gender" />
+        </StackLayout>
+        <Label
+            Margin="5,0,5,5"
+            IsVisible="false"
+            TextColor="Red"
+            x:Name="genderError"/>
+        <Button
+            HorizontalOptions="FillAndExpand"
+            BackgroundColor="{x:StaticResource Primary}"
+            Text="Submit"
+            Margin="0,10,0,0"
+            CornerRadius="8"
+            TextColor="White"
+            FontAttributes="Bold"
+            Clicked="SubmitClick"
+            >
+        </Button>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_CRUD_SQLite.Pages.AllUsers"
+             BackgroundColor="#B5C2AA"
+             Title="AllUsers">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="Add_Clicked" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+    </ContentPage.ToolbarItems>
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+        <Label
+            TextColor="Black"
+            FontSize="14"
+            Margin="10,5"
+            FontAttributes="Bold"
+            HorizontalOptions="StartAndExpand"
+            Text="Note: Swipe from left to edit or delete"
+            />
+        <ListView
+                CachingStrategy="RecycleElement"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                BackgroundColor="Transparent"
+                x:Name="UsersListView"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand"
+                >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItem 
+                                            CommandParameter="{Binding UserId}"
+                                            Invoked="OnSwipeDelete"
+                                            IconImageSource="bin"
+                                            BackgroundColor="Red"></SwipeItem>
+                            <SwipeItem 
+                                            CommandParameter="{Binding UserId}"
+                                            Invoked="OnSwipeEdit"
+                                            IconImageSource="edit"
+                                            BackgroundColor="Black"></SwipeItem>
+
+                        </SwipeView.LeftItems>
+                        <SwipeView.Content>
+                            <Frame
+                                    Margin="10,10,10,0"
+                                    CornerRadius="8"
+                                    Padding="16"
+                                    BackgroundColor="{DynamicResource Gray300}"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="Fill">
+                                <StackLayout>
+                                    <Label
+                                            TextColor="Black"
+                                            FontSize="14"
+                                            FontAttributes="Bold"
+                                            Text="{Binding UserName ,StringFormat='User Name : {0}'}"
+                                        />
+                                    <Label
+                                            TextColor="Black"
+                                            FontSize="14"
+                                            FontAttributes="Bold"
+                                            Text="{Binding CountryName ,StringFormat='Country Name : {0}'}"
+                                        />
+                                    <Label
+                                            TextColor="Black"
+                                            FontSize="14"
+                                            FontAttributes="Bold"
+                                            Text="{Binding CityName ,StringFormat='City Name : {0}'}"
+                                        />
+                                    <Label
+                                            TextColor="Black"
+                                            FontSize="14"
+                                            FontAttributes="Bold"
+                                            Text="{Binding Gender ,StringFormat='Gender : {0}'}"
+                                        />
+                                </StackLayout>
+
+                            </Frame>
+                        </SwipeView.Content>
+                    </SwipeView>
+
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+        
+    </StackLayout>
+</ContentPage>

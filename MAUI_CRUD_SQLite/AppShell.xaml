@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MAUI_CRUD_SQLite.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MAUI_CRUD_SQLite"
+    xmlns:pages="clr-namespace:MAUI_CRUD_SQLite.Pages"
+    Shell.FlyoutBehavior="Disabled">
+    <TabBar>
+        <ShellContent
+            Title="All Users"
+            ContentTemplate="{DataTemplate pages:AllUsers}"
+            Icon="account_task"
+            />
+        <!--<ShellContent
+            Title="Add User"
+            ContentTemplate="{DataTemplate pages:AddUser}"
+            Icon="account_task"
+            />-->
+        <ShellContent
+            Title="City"
+            ContentTemplate="{DataTemplate pages:AddCity}"
+            Icon="city"
+            />
+        <ShellContent
+            Title="Country"
+            ContentTemplate="{DataTemplate pages:AddCountry}"
+            Icon="country"
+            />
+    </TabBar>
+    
+
+</Shell>

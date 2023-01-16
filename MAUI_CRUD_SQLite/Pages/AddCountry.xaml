@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_CRUD_SQLite.Pages.AddCountry"
+             BackgroundColor="#B5C2AA"
+             NavigationPage.HasBackButton="False"
+             Title="Country">
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        Margin="20"
+        Spacing="10">
+        <Frame
+                Margin="0,5,0,0"
+                CornerRadius="8"
+                BackgroundColor="{DynamicResource Gray300}"
+                Padding="8,2">
+                <Entry
+                    TextChanged="countryNameEntry_TextChanged"
+                    Placeholder="Enter country name"
+                    BackgroundColor="{DynamicResource Gray300}"
+                    PlaceholderColor="Black"
+                    TextColor="Black"
+                    MaxLength="25"
+                    x:Name="countryNameEntry"/>
+            </Frame>
+            <Label
+                Margin="5,0,5,5"
+                IsVisible="false"
+                TextColor="Red"
+                x:Name="countryNameError"/>
+            <Button
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="{x:StaticResource Primary}"
+                Text="Submit"
+                Margin="0,10,0,0"
+                CornerRadius="8"
+                TextColor="White"
+                FontAttributes="Bold"
+                Clicked="SubmitClick"
+                >
+        </Button>
+        <StackLayout
+                x:Name="listStack"
+                VerticalOptions="FillAndExpand"
+                Margin="0,20,0,0">
+                <Label
+                TextColor="Black"
+                FontSize="16"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="Countries List"
+                />
+                <Label
+                    TextColor="Black"
+                    FontSize="14"
+                    Margin="10,0,0,0"
+                    FontAttributes="Bold"
+                    HorizontalOptions="StartAndExpand"
+                    Text="Note: Swipe from left to edit or delete"
+                    />
+
+            <ListView
+                CachingStrategy="RecycleElement"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                BackgroundColor="Transparent"
+                x:Name="countriesListView"
+                SelectionMode="None"
+                VerticalOptions="FillAndExpand"
+                >
+                <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <SwipeView>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItem 
+                                            CommandParameter="{Binding CountryId}"
+                                            Invoked="OnSwipeDelete"
+                                            IconImageSource="bin"
+                                            BackgroundColor="Red"></SwipeItem>
+                                        <SwipeItem 
+                                            CommandParameter="{Binding CountryId}"
+                                            Invoked="OnSwipeEdit"
+                                            IconImageSource="edit"
+                                            BackgroundColor="Black"></SwipeItem>
+                                    
+                                    </SwipeView.LeftItems>
+                                    <SwipeView.Content>
+                                        <Frame
+                                            Margin="10,10,10,0"
+                                            CornerRadius="8"
+                                            Padding="16"
+                                            BackgroundColor="{DynamicResource Gray300}"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="Fill">
+                                                            <Label
+                                                TextColor="Black"
+                                                FontSize="14"
+                                                FontAttributes="Bold"
+                                                Text="{Binding CountryName}"
+                                            />
+                                        </Frame>
+                                    </SwipeView.Content>
+                            </SwipeView>
+                               
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </StackLayout>
+        
+</ContentPage>
